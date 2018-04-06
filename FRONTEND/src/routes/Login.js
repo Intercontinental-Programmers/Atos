@@ -13,7 +13,8 @@ import Typography from 'material-ui/Typography';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import axios from "axios";
+//import axios from 'axios';
+
 
 const styles = theme => ({
     root: {
@@ -56,6 +57,38 @@ const theme = createMuiTheme({
     },
 });
 
+// const config = {
+//     headers: {
+//         'Content-Type': 'text/plain',
+//     }
+//   };
+
+function login() {
+    var data = {
+        username: 'efef',
+        password: 'defefe'
+    }
+
+    console.log(data)
+
+    var request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:5000/api/auth/login', true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(data);
+    
+    console.log(request)
+
+    // axios.post('http://localhost:5000/api/auth/login', querystring.stringify(data), config)
+
+    // $.ajax({
+    //     type: 'POST', url: 'http://localhost:5000/api/auth/login', data: {
+    //       email: "test@email.com"
+    //     },
+    //   }).done(function(res) {
+    //     console.log(res);
+    //   })
+}
+
 class LoginComponent extends React.Component {
     state = {
         amount: '',
@@ -77,19 +110,6 @@ class LoginComponent extends React.Component {
         this.setState({ showPassword: !this.state.showPassword });
     };
 
-    handleLogin = () => {
-        axios.post('http://localhost:3000/api/items', {
-            firstName: 'Fred',
-            lastName: 'Flintstone'
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    };
-
     render() {
         const { classes } = this.props;
 
@@ -97,49 +117,49 @@ class LoginComponent extends React.Component {
             <div className={classes.root}>
 
                 <MuiThemeProvider theme={theme}>
-                <Grid container spacing={0}>
-                <Grid item xs />
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
+                    <Grid container spacing={0}>
+                        <Grid item xs />
+                        <Grid item xs={6}>
+                            <Paper className={classes.paper}>
 
-                    <Typography variant="display1" gutterBottom>
-                        Please enter your login and password:
+                                <Typography variant="display1" gutterBottom>
+                                    Please enter your login and password:
                 </Typography>
 
-                    <FormControl fullWidth className={classes.margin}>
-                        <InputLabel htmlFor="login">Login</InputLabel>
-                        <Input
-                            id="login"
-                        />
-                    </FormControl>
-                    <FormControl fullWidth className={classNames(classes.margin)}>
-                        <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input
-                            id="password"
-                            type={this.state.showPassword ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="Toggle password visibility"
-                                        onClick={this.handleClickShowPassword}
-                                        onMouseDown={this.handleMouseDownPassword}
-                                    >
-                                        {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                        />
-                    </FormControl>
+                                <FormControl fullWidth className={classes.margin}>
+                                    <InputLabel htmlFor="login">Login</InputLabel>
+                                    <Input
+                                        id="login"
+                                    />
+                                </FormControl>
+                                <FormControl fullWidth className={classNames(classes.margin)}>
+                                    <InputLabel htmlFor="password">Password</InputLabel>
+                                    <Input
+                                        id="password"
+                                        type={this.state.showPassword ? 'text' : 'password'}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="Toggle password visibility"
+                                                    onClick={this.handleClickShowPassword}
+                                                    onMouseDown={this.handleMouseDownPassword}
+                                                >
+                                                    {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
 
-                    <Button className={classes.button} onClick={this.handleLogin} 
-                    variant="raised" color="primary">
-                        Send&#160;&#160;
+                                <Button className={classes.button} onClick={login}
+                                    variant="raised" color="primary">
+                                    Send&#160;&#160;
                         <Icon className={classes.rightIcon}>send</Icon>
-                    </Button>
-                    </Paper>
-                </Grid>
-                <Grid item xs />
-            </Grid>
+                                </Button>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs />
+                    </Grid>
                 </MuiThemeProvider>
             </div>
         );
