@@ -42,9 +42,9 @@ public class DBInitializer implements ApplicationListener<ContextRefreshedEvent>
 	//FIXME: temporary
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		itemRepository.save(new Item("item1", "description1", "user"));
-		itemRepository.save(new Item("item2", "description2", "user"));
-		itemRepository.save(new Item("item3", "description3", "user2"));
+		itemRepository.save(new Item("item1", "description1"));
+		itemRepository.save(new Item("item2", "description2"));
+		itemRepository.save(new Item("item3", "description3"));
 		itemRepository.save(new Item("item4", "description4"));
 		itemRepository.save(new Item("item5", "description5"));
 		roleRepository.save(new Role("ROLE_ADMIN"));
