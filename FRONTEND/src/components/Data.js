@@ -31,6 +31,7 @@ function Data(props) {
 				<Typography component="p">
 				Email : {props.email}<br/> Position: {props.position}<br/>Website: {props.website}
 				<br/>Language: {props.languages}<br/>Level: {props.level}
+
           </Typography>
 			</CardContent>
 			<CardActions>
