@@ -1,6 +1,7 @@
-out
-.gradle
-build
-.idea
+**/out
+**/.gradle
+**/build
+**/.idea
 **/*.iml
-.DS_Store
+**/.DS_Store
+
