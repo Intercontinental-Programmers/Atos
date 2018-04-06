@@ -77,6 +77,7 @@ class Navbar extends React.Component {
                                 React Simple App
                             </Typography>
                             <Button color="inherit" href="/login">Login</Button>
+                            <Button color="inherit" href="/register">Register</Button>
                         </Toolbar>
                     </AppBar>
                 </MuiThemeProvider>
