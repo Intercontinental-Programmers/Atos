@@ -29,15 +29,16 @@ function Data(props) {
 				{props.name} {props.surname}
           </Typography>
 				<Typography component="p">
-				{props.email}{props.position}{props.website}{props.languages}{props.level}
+				Email : {props.email}<br/> Position: {props.position}<br/>Website: {props.website}
+				<br/>Language: {props.languages}<br/>Level: {props.level}
           </Typography>
 			</CardContent>
 			<CardActions>
 				<Button size="small" color="primary">
-					Share
+					Add to list
           </Button>
 				<Button size="small" color="primary">
-					Learn More
+					Show more info
           </Button>
 			</CardActions>
 		</Card>

@@ -4,7 +4,6 @@ import Data from "./Data";
 function DataList(props) {
   return (
 
-  	//mapa iteruje po każdym itemie
     <div>
       {props.data.map(c => <Data name={c.name} 
       surname={c.surname} email={c.email} 
