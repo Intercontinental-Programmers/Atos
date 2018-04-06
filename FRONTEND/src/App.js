@@ -7,6 +7,7 @@ import Footer from "./components/Footer"
 import Home from './routes/Home';
 import About from './routes/About';
 import Login from './routes/Login';
+import './style.css';
 
 class App extends Component {
   render() {
