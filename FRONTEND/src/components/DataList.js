@@ -6,7 +6,10 @@ function DataList(props) {
 
   	//mapa iteruje po każdym itemie
     <div>
-      {props.data.map(c => <Data key={c.id} name={c.name} description={c.description} />)}
+      {props.data.map(c => <Data name={c.name} 
+      surname={c.surname} email={c.email} 
+      position={c.position} website={c.website} 
+      languages={c.languages} level={c.level} />)}
      </div> 
   ); 
 } 
