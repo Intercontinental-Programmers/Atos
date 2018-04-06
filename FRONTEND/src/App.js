@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router, Route
 } from 'react-router-dom';
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 import Home from './routes/Home';
 import About from './routes/About';
 
@@ -17,6 +18,7 @@ class App extends Component {
             <Route path="/about" component={About} />
           </div>
         </Router>
+        <Footer />
       </div>
     );
   }
