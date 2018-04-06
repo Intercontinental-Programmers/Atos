@@ -1,54 +1,43 @@
-import React, { Component } from 'react';
-import DataList from "../components/DataList";
-import logo from './logo.svg';
-import axios from "axios";
-import './home.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 
-class Home extends Component {
+const styles = theme => ({
+  root: {
+    position: 'relative',
+    marginTop: '13%',
+    flexGrow: 1,
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
 
-  state = {
-    data: []
-  };
+function Home(props) {
+  const { classes } = props;
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:8080/api/items")
-      .then(response => {
-
-        // create an array of contacts only with relevant data
-        const newData = response.data.map(c => {
-          return {
-            id: c.id,
-            name: c.name,
-            description: c.description
-          };
-        });
-
-        // create a new "State" object without mutating 
-        // the original State object. 
-        const newState = Object.assign({}, this.state, {
-          data: newData
-        });
-
-        // store the new state object in the component's state
-        this.setState(newState);
-      })
-      .catch(error => console.log(error));
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Data Set</h1>
-        </header>
-
-        <DataList data={this.state.data} />
-
-      </div>
-    );
-  }
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={0}>
+        <Grid item xs />
+        <Grid item xs={6}>
+          <Typography variant="display4" gutterBottom>
+            React App
+          </Typography>
+          <Typography variant="display2" gutterBottom>
+            we create words.
+          </Typography>
+        </Grid>
+        <Grid item xs />
+      </Grid>
+    </div>
+  );
 }
 
-export default Home;
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Home);
