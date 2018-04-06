@@ -9,21 +9,20 @@ public class Developer {
     private String email;
     private String position;
     private String website;
-    private String level;
     private List<String> languages;
+    private String city;
+    private boolean student;
 
-    public Developer(String name, String surname, String email, String position, String website, List<String> languages, String level) {
+    public Developer(String name, String surname, String email, String position,
+                     String website, List<String> languages, String city, boolean student) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.position = position;
         this.website = website;
         this.languages = languages;
-        this.level = level;
-    }
-
-    public String getLevel(){
-        return level;
+        this.city = city;
+        this.student = student;
     }
 
     public String getName() {
@@ -48,6 +47,14 @@ public class Developer {
 
     public List<String> getLanguages() {
         return languages;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public boolean isStudent() {
+        return student;
     }
 }
 

@@ -6,12 +6,14 @@ public class DeveloperRequest {
 
     private String position;
     private List<String> languages;
-    private String level;
+    private boolean student;
+    private String city;
 
-    public DeveloperRequest( String position, List<String> languages, String level) {
+    public DeveloperRequest(String position, List<String> languages, String city, boolean student) {
         this.position = position;
         this.languages = languages;
-        this.level = level;
+        this.student = student;
+        this.city = city;
     }
 
     public String getPosition() {
@@ -22,7 +24,11 @@ public class DeveloperRequest {
         return languages;
     }
 
-    public String getLevel() {
-        return level;
+    public boolean isStudent() {
+        return student;
+    }
+
+    public String getCity() {
+        return city;
     }
 }
