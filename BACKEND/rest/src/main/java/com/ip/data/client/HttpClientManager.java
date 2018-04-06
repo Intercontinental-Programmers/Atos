@@ -27,7 +27,6 @@ public class HttpClientManager {
 
     private JSONObject extractBody(CloseableHttpResponse response) throws IOException {
 
-
         BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
         StringBuilder result = new StringBuilder();

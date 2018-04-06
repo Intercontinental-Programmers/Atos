@@ -9,15 +9,21 @@ public class Developer {
     private String email;
     private String position;
     private String website;
+    private String level;
     private List<String> languages;
 
-    public Developer(String name, String surname, String email, String position, String website, List<String> languages) {
+    public Developer(String name, String surname, String email, String position, String website, List<String> languages, String level) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.position = position;
         this.website = website;
         this.languages = languages;
+        this.level = level;
+    }
+
+    public String getLevel(){
+        return level;
     }
 
     public String getName() {
