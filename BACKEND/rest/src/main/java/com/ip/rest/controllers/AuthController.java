@@ -18,7 +18,6 @@ import static com.ip.services.ValidationException.errorMapFromBindingResult;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin
 public class AuthController {
 
     private AppUserService appUserService;
