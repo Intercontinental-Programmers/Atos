@@ -21,6 +21,7 @@ const styles = theme => ({
         paddingTop: '13%',
         display: 'flex',
         flexWrap: 'wrap',
+
     },
     paper: {
         padding: theme.spacing.unit * 2,
