@@ -35,9 +35,9 @@ public class DeveloperController {
         List<String> languages = new ArrayList<>();
         languages.add("Python");
         languages.add("Java");
-        result.add(new Developer("Adrian", "Maślak", "email@o2.pl", "Frontend developer", "www.mojastrona.pl", languages));
-        result.add(new Developer("Marian", "Cieślak", "emaaail@o2.pl", "Backend developer", "www.mojaaaastrona.pl", languages));
-        result.add(new Developer("Dorian", "Maślak", "mójemail@o2.pl", "Java developer", "www.mojastronazdanymi.pl", languages));
+        result.add(new Developer("Adrian", "Maślak", "email@o2.pl", "Frontend developer", "www.mojastrona.pl", languages, "chuj"));
+        result.add(new Developer("Marian", "Cieślak", "emaaail@o2.pl", "Backend developer", "www.mojaaaastrona.pl", languages, "Master"));
+        result.add(new Developer("Dorian", "Maślak", "mójemail@o2.pl", "Java developer", "www.mojastronazdanymi.pl", languages, "Junior"));
 
         return ResponseBuilder.status(200).body(result);
     }
