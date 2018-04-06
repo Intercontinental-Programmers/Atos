@@ -82,7 +82,7 @@ public class AppUserServiceImpl implements AppUserService {
     public void deleteUser(long id) throws ValidationException {
 
         if (!userRepository.existsById(id))
-            throw new ValidationException("id", "Item with given id doesn't exist");
+            throw new ValidationException("id", "Developer with given id doesn't exist");
 
         userRepository.deleteById(id);
     }
