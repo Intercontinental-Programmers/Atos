@@ -1,7 +1,5 @@
 package com.ip.security;
 
-import com.ip.security.errorHandlers.CustomAccessDeniedHandler;
-import com.ip.security.errorHandlers.CustomAuthenticationEntryPoint;
 import com.ip.security.filters.AuthenticationFilter;
 import com.ip.security.filters.AuthorizationFilter;
 import com.ip.security.util.TokenProvider;
@@ -15,57 +13,41 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.access.AccessDeniedHandler;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-	private UserDetailsService userDetailsService;
-	private TokenProvider tokenProvider;
+    private UserDetailsService userDetailsService;
+    private TokenProvider tokenProvider;
 
-	@Autowired
-	public WebSecurity(UserDetailsServiceImpl userDetailsService, TokenProvider tokenProvider) {
-		this.userDetailsService = userDetailsService;
-		this.tokenProvider = tokenProvider;
-	}
+    @Autowired
+    public WebSecurity(UserDetailsServiceImpl userDetailsService, TokenProvider tokenProvider) {
+        this.userDetailsService = userDetailsService;
+        this.tokenProvider = tokenProvider;
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-					.csrf().disable()
-					.authorizeRequests()
-				    .antMatchers("/api/items/**").hasAnyRole("ADMIN", "USER")
-				    .antMatchers("/api/users/**").hasRole("ADMIN")
-				.and()
-					.exceptionHandling()
-						.authenticationEntryPoint(authenticationEntryPoint())
-						.accessDeniedHandler(accessDeniedHandler())
-				.and()
-					.addFilter(new AuthenticationFilter(authenticationManager(), tokenProvider))
-					.addFilter(new AuthorizationFilter(authenticationManager(), tokenProvider));
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/api/items/**").permitAll()
+                .antMatchers("/api/users/**").hasRole("ADMIN")
+                .and()
+                .addFilter(new AuthenticationFilter(authenticationManager(), tokenProvider))
+                .addFilter(new AuthorizationFilter(authenticationManager(), tokenProvider));
 
-	}
+    }
 
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-	}
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    }
 
-	@Bean
-	public AuthenticationEntryPoint authenticationEntryPoint(){
-		return new CustomAuthenticationEntryPoint();
-	}
-
-	@Bean
-	public AccessDeniedHandler accessDeniedHandler(){
-		return new CustomAccessDeniedHandler();
-	}
-
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
