@@ -27,7 +27,7 @@ const styles = theme => ({
         flexBasis: 200,
     },
     button: {
-        marginTop: '2em',
+        marginTop: '1em',
         marginLeft: '0.5em'
     },
 });
@@ -54,6 +54,7 @@ class LoginComponent extends React.Component {
         showPassword: false,
     };
 
+
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
     };
@@ -73,7 +74,7 @@ class LoginComponent extends React.Component {
             <div className={classes.root}>
 
                 <Typography variant="display1" gutterBottom>
-                    Please enter your login and password:
+                    Please enter data:
                 </Typography>
 
                 <FormControl fullWidth className={classes.margin}>
@@ -104,7 +105,22 @@ class LoginComponent extends React.Component {
                         }
                     />
                 </FormControl>
-
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel htmlFor="adornment-amount">Email</InputLabel>
+                    <Input
+                        id="adornment-amount"
+                        value={this.state.amount}
+                        onChange={this.handleChange('amount')}
+                    />
+                </FormControl>
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel htmlFor="adornment-amount">Company name</InputLabel>
+                    <Input
+                        id="adornment-amount"
+                        value={this.state.amount}
+                        onChange={this.handleChange('amount')}
+                    />
+                </FormControl>
                 <MuiThemeProvider theme={theme}>
                     <Button className={classes.button} variant="raised" color="primary">
                         Send&#160;&#160;
