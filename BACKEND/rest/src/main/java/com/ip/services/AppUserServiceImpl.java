@@ -46,7 +46,7 @@ public class AppUserServiceImpl implements AppUserService {
 
         var errors = new LinkedHashMap<String, String>();
 
-        if (userRepository.existsByUsername(user.getUsername()))
+        if (userRepository.existsByCompanyName(user.getCompanyName()))
             errors.put("username", "User with given username already exists");
 
         if (userRepository.existsByEmail(user.getEmail()))
@@ -73,7 +73,7 @@ public class AppUserServiceImpl implements AppUserService {
                 .findById(id)
                 .orElseThrow(() -> new ValidationException("id", "User with given id doesn't exist"));
 
-        if (userRepository.existsByUsername(user.getName()))
+        if (userRepository.existsByCompanyName(user.getCompanyName()))
             throw new ValidationException("name", "User with given name already exists");
 
         result.update(user);
