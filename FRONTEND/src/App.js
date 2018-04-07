@@ -5,7 +5,7 @@ import {
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import Home from './routes/Home';
-import About from './routes/About';
+import Tinder from './routes/Tinder';
 import Login from './routes/Login';
 import './style.css';
 import Register from './routes/Register';
@@ -19,7 +19,7 @@ class App extends Component {
         <Router>
           <div id="content">
             <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
+            <Route path="/tinder" component={Tinder} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </div>
