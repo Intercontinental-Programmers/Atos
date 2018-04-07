@@ -20,7 +20,7 @@ function DataList(props) {
     console.log(list)
 
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:5000/api/developers/test', true);
+    request.open('POST', 'http://156.17.72.33:5000/api/developers/test', true);
     request.setRequestHeader('Content-Type', 'text/plain');
     request.send(JSON.stringify(list));
     console.log(request)
