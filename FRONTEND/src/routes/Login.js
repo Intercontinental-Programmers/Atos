@@ -61,6 +61,7 @@ class LoginComponent extends React.Component {
         login: '',
         password: '',
         showPassword: false,
+        data: []
     };
 
     login = () => {
@@ -76,7 +77,8 @@ class LoginComponent extends React.Component {
         request.setRequestHeader('Content-Type', 'text/plain');
         request.send(JSON.stringify(data));
         console.log(request)
-        console.log(request.text)
+        console.log(request.responseText)
+
     }
 
     handleChange = prop => event => {
