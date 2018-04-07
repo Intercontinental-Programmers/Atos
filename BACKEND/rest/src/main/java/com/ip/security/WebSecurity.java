@@ -40,7 +40,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(new AuthenticationFilter(authenticationManager(), tokenProvider))
                 .addFilter(new AuthorizationFilter(authenticationManager(), tokenProvider));
-
     }
 
     @Override

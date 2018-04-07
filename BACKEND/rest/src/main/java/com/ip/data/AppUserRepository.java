@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AppUserRepository extends CrudRepository<AppUser, Long> {
-    AppUser findByUsername(String username);
+    AppUser findByCompanyName(String companyName);
 
     boolean existsByCompanyName(String companyName);
 
