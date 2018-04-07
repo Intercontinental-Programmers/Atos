@@ -18,12 +18,12 @@ import Listcity from "../components/Listcity";
 
 const styles = theme => ({
   root: {
-    width:'20%',
+    width:'70%',
   }
 });
 
 class Criteria extends React.Component {
-  state = { open: true };
+  state = { open: false };
 
   handleClick = () => {
     this.setState({ open: !this.state.open });
@@ -42,7 +42,7 @@ class Criteria extends React.Component {
             <ListItemText inset primary="Languages" />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
-          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+          <Collapse in={this.state.open}>
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
                 <Lanlist/>
@@ -59,7 +59,7 @@ class Criteria extends React.Component {
             <ListItemText inset primary="Level" />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
-          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+          <Collapse in={this.state.open}>
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
                 <Lvllist/>
@@ -72,7 +72,7 @@ class Criteria extends React.Component {
           subheader={<ListSubheader component="div">Search options</ListSubheader>}
         >
           <ListItem button onClick={this.handleClick}>
-            <ListItemText inset primary="Level" />
+            <ListItemText inset primary="City" />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
