@@ -21,6 +21,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/developers")
 public class DeveloperController {
 
+    @PostMapping("/test")
+    public ResponseEntity test(@RequestBody String json) {
+
+       return ResponseBuilder.status(200).body(json);
+
+    }
+
     @PostMapping()
     public ResponseEntity post(@RequestBody String json) {
 

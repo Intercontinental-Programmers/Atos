@@ -39,6 +39,38 @@ public class DBInitializer implements ApplicationListener<ContextRefreshedEvent>
                 "Regular", "sdadoas.com", "Java", "Wrocław",
                 "disaoduasidnsapidnaosidas", true));
 
+        developerRepository.save(new Developer("marek", "grygo", "test@test.com",
+                "Regular", "sdadoas.com", "Python", "Lublin",
+                "disaoddaskmuasidnsapidnaosidas", true));
+
+        developerRepository.save(new Developer("jakub", "dudycz", "test@test.com",
+                "Junior", "sdadoas.com", "Javascript", "Poznań",
+                "disaoduasisaoddnsapidnaosidas", false));
+
+        developerRepository.save(new Developer("maciej", "hajdug", "test@test.com",
+                "Senior", "sdadoas.com", "Ruby", "Warszawa",
+                "disaoduasidnsapiddsadnaosidas", true));
+
+        developerRepository.save(new Developer("grzegorz", "dzikowski", "test@test.com",
+                "Regular", "sdadoas.com", "Java", "Wrocław",
+                "disaoduasidnsapidnaosidas", true));
+
+        developerRepository.save(new Developer("damian", "jankowski", "test@test.com",
+                "Senior", "sdadoas.com", "Java", "Wrocław",
+                "disaoddaskmuasidnsapidnaosidas", true));
+
+        developerRepository.save(new Developer("jakub", "dudycz", "test@test.com",
+                "Regular", "sdadoas.com", "Javascript", "Poznań",
+                "disaoduasisaoddnsapidnaosidas", false));
+
+        developerRepository.save(new Developer("maciej", "hajdug", "test@test.com",
+                "Junior", "sdadoas.com", "Ruby", "Warszawa",
+                "disaoduasidnsapiddsadnaosidas", true));
+
+        developerRepository.save(new Developer("grzegorz", "dzikowski", "test@test.com",
+                "Regular", "sdadoas.com", "Java", "Wrocław",
+                "disaoduasidnsapidnaosidas", true));
+
 
     }
 }
