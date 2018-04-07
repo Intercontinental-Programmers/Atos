@@ -27,6 +27,9 @@ public class AuthorizationFilter extends BasicAuthenticationFilter{
 									HttpServletResponse res,
 									FilterChain chain) throws IOException, ServletException {
 
+		if (req.getMethod().equals("OPTIONS"))
+			chain.doFilter(req, res);
+
 		String token = req.getHeader(HEADER_STRING);
 
 		if (tokenProvider.validateToken(token)) {

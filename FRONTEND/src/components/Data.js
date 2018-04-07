@@ -4,6 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 
 const styles = {
 	card: {
@@ -14,14 +16,27 @@ const styles = {
 	},
 };
 
+const divStyle = {
+	marginTop: '2em',
+	float:'left',
+	width:'400px',
+  };
+  const divStyle2 = {
+	width:'600px',
+  };
+
 function Data(props) {
 	const { classes } = props;
 	return (
 		<div>
-		<Card className={classes.card}>
+			<Grid container spacing={0} >
+                <Grid item xs />
+                    <Grid item xs={6}  style={divStyle2}>
+                        <Paper className={classes.paper}>
+		<Card className={classes.card} style={divStyle}>
 			<CardMedia
 				className={classes.media}
-				image="/static/images/cards/contemplative-reptile.jpg"
+				image=""
 				title="Contemplative Reptile"
 			/>
 			<CardContent>
@@ -43,6 +58,10 @@ function Data(props) {
           </Button>
 			</CardActions>
 		</Card>
+		</Paper>
+        </Grid>
+     <Grid item xs />
+    </Grid>
 		</div >
 	);
 }

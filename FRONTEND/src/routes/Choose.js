@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Data from "../components/Data";
-
+  const divStyle = {
+    width:'1200px',
+    };
 class Choose extends Component {
 
   state = {
     data: []
   };
 
+
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/developers/test")
+      .get("http://156.17.72.33:5000/api/developers/test")
       .then(response => {
 
         const newData = response.data.map(c => {
           return {
-            id: c.id,
             name: c.name,
-            description: c.description
+            surname: c.surname,
+            email: c.email,
+            position: c.position,
+            website: c.website,
+            languages:c.languages,
+            level:c.level,
+
           };
         });
 
@@ -35,7 +43,7 @@ class Choose extends Component {
 
   render() {
     return (
-        <div>
+        <div style={divStyle} >
             {this.state.data.map(c => <Data name={c.name}
                 surname={c.surname} email={c.email}
                 position={c.position} website={c.website}

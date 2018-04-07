@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import DataList from "../components/DataList";
 import axios from "axios";
 
+
+
 class Tinder extends Component {
 
   state = {
@@ -10,7 +12,7 @@ class Tinder extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/developers")
+      .get("http://156.17.72.33:5000/api/developers")
       .then(response => {
 
         // create an array of contacts only with relevant data
