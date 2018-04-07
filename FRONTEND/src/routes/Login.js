@@ -75,7 +75,7 @@ function login() {
     request.open('POST', 'http://localhost:5000/api/auth/login', true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(data);
-    
+
     console.log(request)
 
     // axios.post('http://localhost:5000/api/auth/login', querystring.stringify(data), config)
