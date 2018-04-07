@@ -25,6 +25,9 @@ function DataList(props) {
     request.send(JSON.stringify(list));
     console.log(request)
     console.log(request.text)
+    if (window) window.location.href = "/choose"
+    return true;
+
   }
 
 
