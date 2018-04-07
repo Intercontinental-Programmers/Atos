@@ -11,16 +11,22 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import { FormControlLabel } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
+import Icon from 'material-ui/Icon';
+import Button from 'material-ui/Button';
 
 
 const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginTop: '20%',
   },
+
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
+    marginTop: '3%',
+    marginBottom: '3%',
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
@@ -38,19 +44,19 @@ const MenuProps = {
   },
 };
 
-const languages = [
+const lang = [
   'Python',
   'Javascript',
   'C++'
 ];
 
-const levels = [
+const lvl = [
   'Junior',
   'Middle',
   'Senior'
 ];
 
-const cities = [
+const town = [
   'Warszawa',
   'Lublin',
   'Wroclaw'
@@ -71,27 +77,27 @@ const theme = createMuiTheme({
 
 class Criteria extends React.Component {
   state = {
-    level: [],
-    language: [],
-    city: [],
-    isstudent: true,
+    levels: [],
+    languages: [],
+    cities: [],
+    student: true,
   };
 
 
   handleChange = event => {
-    this.setState({ isStudent: event.target.checked });
+    this.setState({ student: event.target.checked });
   };
 
   handleLanguageChange = event => {
-    this.setState({ language: event.target.value });
+    this.setState({ languages: event.target.value });
   };
 
   handleLevelChange = event => {
-    this.setState({ level: event.target.value });
+    this.setState({ levels: event.target.value });
   };
 
   handleCityChange = event => {
-    this.setState({ city: event.target.value });
+    this.setState({ cities: event.target.value });
   };
 
   render() {
@@ -110,16 +116,16 @@ class Criteria extends React.Component {
                   <InputLabel htmlFor="select-multiple-checkbox">Language</InputLabel>
                   <Select
                     multiple
-                    value={this.state.language}
+                    value={this.state.languages}
                     onChange={this.handleLanguageChange}
                     input={<Input id="select-multiple-checkbox" />}
                     renderValue={selected => selected.join(', ')}
                     MenuProps={MenuProps}
                   >
-                    {languages.map(language => (
-                      <MenuItem key={language} value={language}>
-                        <Checkbox checked={this.state.language.indexOf(language) > -1} />
-                        <ListItemText primary={language} />
+                    {lang.map(languages => (
+                      <MenuItem key={languages} value={languages}>
+                        <Checkbox checked={this.state.languages.indexOf(languages) > -1} />
+                        <ListItemText primary={languages} />
                       </MenuItem>
                     ))}
                   </Select>
@@ -129,16 +135,16 @@ class Criteria extends React.Component {
                   <InputLabel htmlFor="select-multiple-checkbox">Level</InputLabel>
                   <Select
                     multiple
-                    value={this.state.level}
+                    value={this.state.levels}
                     onChange={this.handleLevelChange}
                     input={<Input id="select-multiple-checkbox" />}
                     renderValue={selected => selected.join(', ')}
                     MenuProps={MenuProps}
                   >
-                    {levels.map(level => (
-                      <MenuItem key={level} value={level}>
-                        <Checkbox checked={this.state.language.indexOf(level) > -1} />
-                        <ListItemText primary={level} />
+                    {lvl.map(levels => (
+                      <MenuItem key={levels} value={levels}>
+                        <Checkbox checked={this.state.languages.indexOf(levels) > -1} />
+                        <ListItemText primary={levels} />
                       </MenuItem>
                     ))}
                   </Select>
@@ -148,16 +154,16 @@ class Criteria extends React.Component {
                   <InputLabel htmlFor="select-multiple-checkbox">City</InputLabel>
                   <Select
                     multiple
-                    value={this.state.city}
+                    value={this.state.cities}
                     onChange={this.handleCityChange}
                     input={<Input id="select-multiple-checkbox" />}
                     renderValue={selected => selected.join(', ')}
                     MenuProps={MenuProps}
                   >
-                    {cities.map(city => (
-                      <MenuItem key={city} value={city}>
-                        <Checkbox checked={this.state.language.indexOf(city) > -1} />
-                        <ListItemText primary={city} />
+                    {town.map(cities => (
+                      <MenuItem key={cities} value={cities}>
+                        <Checkbox checked={this.state.languages.indexOf(cities) > -1} />
+                        <ListItemText primary={cities} />
                       </MenuItem>
                     ))}
                   </Select>
@@ -166,17 +172,19 @@ class Criteria extends React.Component {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={this.state.isStudent}
+                      color="primary"
+                      checked={this.state.student}
                       onChange={this.handleChange}
-                      value="isStudent"
-                    />
-                  }
-                  label="Student"
-                />
+                      value="student"
+                    />} label="Student" />
 
+                <Button className={classes.button} 
+                  variant="raised" color="primary">
+                  Send&#160;&#160;
+                        <Icon className={classes.rightIcon}>send</Icon>
+                </Button>
 
               </form>
-
             </Paper>
           </Grid>
           <Grid item xs />

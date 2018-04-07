@@ -19,7 +19,7 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         flexGrow: 1,
-        paddingTop: '7%',
+        paddingTop: '10%',
     },
     margin: {
         margin: theme.spacing.unit,
