@@ -49,10 +49,10 @@ public class QueryStringSerializer {
             if (appendNext)
                 builder.append("&");
 
-            builder.append("language=");
+            builder.append("languages=");
 
             for (int i = 0; i < request.getLanguages().size(); i++){
-                String city = request.getCities().get(i);
+                String city = request.getLanguages().get(i);
                 builder.append(city);
 
                 if (i != request.getLanguages().size() - 1)
@@ -66,7 +66,7 @@ public class QueryStringSerializer {
             if (appendNext)
                 builder.append("&");
 
-            builder.append("isStudent=");
+            builder.append("student=");
 
             builder.append(request.isStudent());
         }
