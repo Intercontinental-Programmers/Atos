@@ -5,13 +5,13 @@ import java.util.List;
 public class DeveloperRequest {
 
     private String position;
-    private List<String> languages;
+    private String mainLanguage;
     private boolean student;
     private String city;
 
-    public DeveloperRequest(String position, List<String> languages, String city, boolean student) {
+    public DeveloperRequest(String position, String mainLanguage, String city, boolean student) {
         this.position = position;
-        this.languages = languages;
+        this.mainLanguage = mainLanguage;
         this.student = student;
         this.city = city;
     }
@@ -20,8 +20,8 @@ public class DeveloperRequest {
         return position;
     }
 
-    public List<String> getLanguages() {
-        return languages;
+    public String getMainLanguage() {
+        return mainLanguage;
     }
 
     public boolean isStudent() {
