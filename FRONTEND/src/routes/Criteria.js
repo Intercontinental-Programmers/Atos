@@ -108,9 +108,9 @@ class Criteria extends React.Component {
     request.open('POST', 'http://localhost:5000/api/developers', true);
     request.setRequestHeader('Content-Type', 'text/plain');
     request.setRequestHeader('Authorization', 'Bearer ' + token);
+    console.log('Bearer ' + token)
     request.send(JSON.stringify(data));
     console.log(request)
-    console.log(request.text)
   }
 
   handleChange = event => {

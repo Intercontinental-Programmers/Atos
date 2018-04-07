@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		if (appUser == null) {
 			throw new UsernameNotFoundException(username);
 		}
-		return new User(appUser.getCompanyName(), appUser.getPassword(), getGrantedAuthorities(appUser.getRoles()));
+		return new User(appUser.getUsername(), appUser.getPassword(), getGrantedAuthorities(appUser.getRoles()));
 	}
 
 

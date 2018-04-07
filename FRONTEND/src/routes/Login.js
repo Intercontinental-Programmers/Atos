@@ -73,12 +73,14 @@ class LoginComponent extends React.Component {
 
         console.log(data)
 
-    
+
         var request = new XMLHttpRequest();
+        let token = null;
 
         request.onreadystatechange = function () {
-            if(request.readyState == 4){
+            if (request.readyState === 4) {
                 console.log(JSON.parse(request.response).token)
+                // token = JSON.parse(request.response).token
                 cookie.save('token', (JSON.parse(request.response).token), { path: '/' })
             }
         }
@@ -86,7 +88,11 @@ class LoginComponent extends React.Component {
         request.setRequestHeader('Content-Type', 'text/plain');
         request.send(JSON.stringify(data));
         console.log(request)
-        console.log(request.responseURL)
+        console.log(typeof(token))
+        if (token != undefined) {
+            if (window) window.location.href = "/criteria"
+            return true;
+        }
     }
 
     handleChange = prop => event => {

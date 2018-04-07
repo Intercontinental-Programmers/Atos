@@ -78,7 +78,6 @@ class Navbar extends React.Component {
                             </Typography>
                             <Button color="inherit" href="/login">Login</Button>
                             <Button color="inherit" href="/register">Register</Button>
-                            <Button color="inherit" href="/criteria">Criteria</Button>
                         </Toolbar>
                     </AppBar>
                 </MuiThemeProvider>
