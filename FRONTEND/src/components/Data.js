@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper';
 
 const styles = {
 	card: {
-		maxWidth: '600px',
+		maxWidth: '400px',
 	},
 	media: {
 		height: 200,

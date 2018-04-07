@@ -22,9 +22,12 @@ public class Developer {
     private String city;
     private boolean student;
     private String bio;
+    private List<String> sideTechnologies;
 
     public Developer(String name, String surname, String email, String level,
-                     String website, String mainLanguage, String city, String bio, boolean student) {
+                     String website, String mainLanguage, String city, String bio,
+                     boolean student, List<String> sideTechnologies) {
+
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -34,6 +37,7 @@ public class Developer {
         this.city = city;
         this.student = student;
         this.bio = bio;
+        this.sideTechnologies = sideTechnologies;
     }
 
     public Developer() {
@@ -74,6 +78,10 @@ public class Developer {
 
     public String getBio() {
         return bio;
+    }
+
+    public List<String> getSideTechnologies() {
+        return sideTechnologies;
     }
 }
 
