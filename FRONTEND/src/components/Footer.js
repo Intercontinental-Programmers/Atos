@@ -20,7 +20,7 @@ const theme = createMuiTheme({
 
 const styles = {
     root: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
         width: '100%',
     },
