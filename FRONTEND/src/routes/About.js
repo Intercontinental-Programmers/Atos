@@ -10,7 +10,7 @@ class Home extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/developers")
+      .get("http://156.17.72.33:5000/api/developers")
       .then(response => {
 
         // create an array of contacts only with relevant data
