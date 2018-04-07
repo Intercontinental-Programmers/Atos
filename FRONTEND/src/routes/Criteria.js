@@ -61,12 +61,6 @@ const lvl = [
   'Senior'
 ];
 
-const town = [
-  'Warszawa',
-  'Lublin',
-  'Wrocław'
-];
-
 const theme = createMuiTheme({
   palette: {
     primary: {
