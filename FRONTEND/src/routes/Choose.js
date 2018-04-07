@@ -1,11 +1,13 @@
 import React from "react";
 import Data from "../components/Data";
 
-function Choose(props) {
+function Choose() {
+
+    console.log(Data.data)
 
     return (
         <div>
-            {props.data.map(c => <Data name={c.name}
+            {Data.data.map(c => <Data name={c.name}
                 surname={c.surname} email={c.email}
                 position={c.position} website={c.website}
                 languages={c.languages} level={c.level} />)}

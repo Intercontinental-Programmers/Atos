@@ -56,11 +56,10 @@ const theme = createMuiTheme({
 
 class Register extends React.Component {
     state = {
-        amount: '',
+        login: '',
         password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
+        email: '',
+        company: '',
     };
 
 

@@ -3,6 +3,8 @@ import Data from "./Data";
 import Cards, { Card } from 'react-swipe-card'
 import './style.css'
 
+var data = [];
+
 function DataList(props) {
 
   function add(c) {
@@ -13,8 +15,6 @@ function DataList(props) {
   function rm() {
     console.log(':C');
   }
-
-  var data = [];
 
   return (
 
