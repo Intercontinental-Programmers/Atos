@@ -1,13 +1,14 @@
 package com.ip.data.client;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class HttpResponse {
 
     private int status;
-    private JSONObject body;
+    private JSONArray body;
 
-    public HttpResponse(int status, JSONObject body) {
+    public HttpResponse(int status, JSONArray body) {
         this.status = status;
         this.body = body;
     }
@@ -17,7 +18,7 @@ public class HttpResponse {
         return status;
     }
 
-    public JSONObject getBody() {
+    public JSONArray getBody() {
         return body;
     }
 }

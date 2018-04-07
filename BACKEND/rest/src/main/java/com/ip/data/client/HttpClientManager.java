@@ -4,6 +4,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -17,7 +18,7 @@ public class HttpClientManager {
         CloseableHttpClient client = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(url);
         CloseableHttpResponse response = client.execute(get);
-        JSONObject body = extractBody(response);
+        JSONArray body = extractBody(response);
         int statusCode = response.getStatusLine().getStatusCode();
 
         response.close();
@@ -25,7 +26,7 @@ public class HttpClientManager {
         return new HttpResponse(statusCode, body);
     }
 
-    private JSONObject extractBody(CloseableHttpResponse response) throws IOException {
+    private JSONArray extractBody(CloseableHttpResponse response) throws IOException {
 
         BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
@@ -35,6 +36,6 @@ public class HttpClientManager {
             result.append(line);
         }
 
-        return new JSONObject(result.toString());
+        return new JSONArray(result.toString());
     }
 }
