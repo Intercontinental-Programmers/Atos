@@ -4,16 +4,14 @@ import com.ip.domain.DeveloperRequest;
 
 public class QueryStringSerializer {
 
-    private static boolean appendNext = false;
-
-    public static String serialize(DeveloperRequest request){
+    public static String serialize(DeveloperRequest request) {
 
         StringBuilder builder = new StringBuilder("?");
+        builder.append("levels=");
+        if (!request.getLevels().isEmpty()) {
 
-        if (!request.getLevels().isEmpty()){
-            builder.append("levels=");
 
-            for (int i = 0; i < request.getLevels().size(); i++){
+            for (int i = 0; i < request.getLevels().size(); i++) {
                 String level = request.getLevels().get(i);
                 builder.append(level);
 
@@ -22,17 +20,13 @@ public class QueryStringSerializer {
                     builder.append(",");
             }
 
-               appendNext = true;
         }
 
-        if (!request.getCities().isEmpty()){
+        builder.append("&cities=");
+        if (!request.getCities().isEmpty()) {
 
-            if (appendNext)
-                builder.append("&");
 
-            builder.append("cities=");
-
-            for (int i = 0; i < request.getCities().size(); i++){
+            for (int i = 0; i < request.getCities().size(); i++) {
                 String city = request.getCities().get(i);
                 builder.append(city);
 
@@ -41,37 +35,25 @@ public class QueryStringSerializer {
                     builder.append(",");
             }
 
-            appendNext = true;
         }
+        builder.append("&languages=");
+        if (!request.getLanguages().isEmpty()) {
 
-        if (!request.getLanguages().isEmpty()){
-
-            if (appendNext)
-                builder.append("&");
-
-            builder.append("languages=");
-
-            for (int i = 0; i < request.getLanguages().size(); i++){
+            for (int i = 0; i < request.getLanguages().size(); i++) {
                 String city = request.getLanguages().get(i);
                 builder.append(city);
 
                 if (i != request.getLanguages().size() - 1)
                     builder.append(",");
             }
-
-            appendNext = true;
         }
 
-        if (request.isStudent() != null){
-            if (appendNext)
-                builder.append("&");
-
-            builder.append("student=");
+        builder.append("&student=");
+        if (request.isStudent() != null) {
 
             builder.append(request.isStudent());
         }
 
-        appendNext = false;
         return builder.toString();
     }
 }
