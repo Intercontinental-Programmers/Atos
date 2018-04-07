@@ -88,15 +88,12 @@ class Register extends React.Component {
                 <Typography variant="display1" gutterBottom>
                     Please enter data:
                 </Typography>
-
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Login</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.state.amount}
-                        onChange={this.handleChange('amount')}
-                    />
-                </FormControl>
+                         <FormControl fullWidth className={classes.margin}>
+                            <InputLabel htmlFor="login">Login</InputLabel>
+                            <Input
+                                id="login"
+                            />
+                         </FormControl>
                 <FormControl fullWidth className={classNames(classes.margin)}>
                     <InputLabel htmlFor="adornment-password">Password</InputLabel>
                     <Input
@@ -118,20 +115,16 @@ class Register extends React.Component {
                     />
                 </FormControl>
                 <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Email</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.state.amount}
-                        onChange={this.handleChange('amount')}
-                    />
+                    <InputLabel htmlFor="email">Email</InputLabel>
+                        <Input
+                             id="email"
+                        />
                 </FormControl>
                 <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Company name</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.state.amount}
-                        onChange={this.handleChange('amount')}
-                    />
+                    <InputLabel htmlFor="company">Company Name</InputLabel>
+                        <Input
+                             id="company"
+                        />
                 </FormControl>
                 <MuiThemeProvider theme={theme}>
                     <Button className={classes.button} variant="raised" color="primary">
