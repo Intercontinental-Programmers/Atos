@@ -16,6 +16,9 @@ public class DeveloperRequest {
         this.cities = city;
     }
 
+    public DeveloperRequest() {
+    }
+
     public List<String> getLevels() {
         return levels;
     }
