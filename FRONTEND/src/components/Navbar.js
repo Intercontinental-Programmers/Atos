@@ -74,7 +74,7 @@ class Navbar extends React.Component {
                                 <MenuIcon />
                             </IconButton>
                             <Typography variant="title" color="inherit" className={classes.flex}>
-                                React Simple App
+                                {/* React Simple App */}
                             </Typography>
                             <Button color="inherit" href="/login">Login</Button>
                             <Button color="inherit" href="/register">Register</Button>
