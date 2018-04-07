@@ -78,8 +78,13 @@ class Register extends React.Component {
         request.send(JSON.stringify(data));
     
         console.log(request)
+        setTimeout(this.handle, 3000)
     }
 
+    handle = () => {
+        if (window) window.location.href = "/login"
+        return true;
+    }
 
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
