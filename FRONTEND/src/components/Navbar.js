@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Home';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import cookie from 'react-cookies'
 
 const theme = createMuiTheme({
     palette: {
@@ -40,6 +41,10 @@ class Navbar extends React.Component {
     state = {
         anchorEl: null,
     };
+
+    event = () => {
+        cookie.remove('token', { path: '/' })
+    }
 
     handleClick = event => {
         this.setState({ anchorEl: event.currentTarget });
@@ -78,6 +83,7 @@ class Navbar extends React.Component {
                             </Typography>
                             <Button color="inherit" href="/login">Login</Button>
                             <Button color="inherit" href="/register">Register</Button>
+                            <Button color="inherit" onClick={this.event}>Logout</Button>
                         </Toolbar>
                     </AppBar>
                 </MuiThemeProvider>
