@@ -11,7 +11,7 @@ class Tinder extends Component {
 
   componentDidMount() {
     axios
-      .get("http://156.17.72.33:5000/api/developers")
+      .get("http://localhost:5000/api/developers")
       .then(response => {
 
         // create an array of contacts only with relevant data
@@ -42,7 +42,6 @@ class Tinder extends Component {
   render() {
     return (
       <div>
-        <Criteria/>
         <DataList data={this.state.data} />
 
       </div>
