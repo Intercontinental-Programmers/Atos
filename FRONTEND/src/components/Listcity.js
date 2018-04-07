@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
+import IconButton from 'material-ui/IconButton';
 
 const styles = theme => ({
   root: {
@@ -12,7 +13,7 @@ const styles = theme => ({
   },
 });
 
-class Student extends React.Component {
+class Listcity extends React.Component {
   state = {
     checked: [0],
   };
@@ -39,7 +40,7 @@ class Student extends React.Component {
     return (
       <div className={classes.root}>
         <List>
-          {['Student'].map(value => (
+          {['Wroclaw','Warszawa','Krakow'].map(value => (
             <ListItem
               key={value}
               role={undefined}
@@ -60,8 +61,8 @@ class Student extends React.Component {
   }
 }
 
-Student.propTypes = {
+Listcity.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Student);
+export default withStyles(styles)(Listcity);
