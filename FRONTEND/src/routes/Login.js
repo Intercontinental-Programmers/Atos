@@ -63,20 +63,20 @@ const theme = createMuiTheme({
 //     }
 //   };
 
-function login() {
-    var data = {
-        username: 'efef',
-        password: 'defefe'
-    }
+// function login() {
+//     var data = {
+//         username: this.login.value,
+//         password: this.password.value,
+//     }
 
-    console.log(data)
+//     console.log(data)
 
-    var request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:5000/api/auth/login', true);
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.send(data);
+//     var request = new XMLHttpRequest();
+//     request.open('POST', 'http://localhost:5000/api/auth/login', true);
+//     request.setRequestHeader('Content-Type', 'text/plain');
+//     request.send(JSON.stringify(data));
 
-    console.log(request)
+//     console.log(request)
 
     // axios.post('http://localhost:5000/api/auth/login', querystring.stringify(data), config)
 
@@ -87,16 +87,30 @@ function login() {
     //   }).done(function(res) {
     //     console.log(res);
     //   })
-}
+// }
 
 class LoginComponent extends React.Component {
     state = {
-        amount: '',
+        login: '',
         password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
     };
+
+    login = () => {
+        var data = {
+            username: this.state.login,
+            password: this.state.password,
+        }
+    
+        console.log(data)
+    
+        var request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:5000/api/auth/login', true);
+        request.setRequestHeader('Content-Type', 'text/plain');
+        request.send(JSON.stringify(data));
+    
+        console.log(request)
+    }
 
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
@@ -130,12 +144,16 @@ class LoginComponent extends React.Component {
                                     <InputLabel htmlFor="login">Login</InputLabel>
                                     <Input
                                         id="login"
+                                        value={this.state.login}
+                                        onChange={this.handleChange('login')}
                                     />
                                 </FormControl>
                                 <FormControl fullWidth className={classNames(classes.margin)}>
                                     <InputLabel htmlFor="password">Password</InputLabel>
                                     <Input
                                         id="password"
+                                        value={this.state.password}
+                                        onChange={this.handleChange('password')}
                                         type={this.state.showPassword ? 'text' : 'password'}
                                         endAdornment={
                                             <InputAdornment position="end">
@@ -151,7 +169,7 @@ class LoginComponent extends React.Component {
                                     />
                                 </FormControl>
 
-                                <Button className={classes.button} onClick={login}
+                                <Button className={classes.button} onClick={this.login}
                                     variant="raised" color="primary">
                                     Send&#160;&#160;
                         <Icon className={classes.rightIcon}>send</Icon>

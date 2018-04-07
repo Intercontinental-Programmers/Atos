@@ -19,20 +19,16 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Size(min = 2, max = 50, message = "First name has to be between 2 and 50 characters long")
-    @NotNull(message = "First name cannot be null")
-    private String name;
-
-    @Size(min = 2, max = 50, message = "Surname has to be between 2 and 50 characters long")
-    @NotNull(message = "Surname cannot be null")
-    private String surname;
+    @Size(min = 2, max = 50, message = "Company name has to be between 2 and 50 characters long")
+    @NotNull(message = "Company name cannot be null")
+    private String companyName;
 
     @Email(message = "Invalid email address format")
     @NotNull(message = "Email address cannot be null")
     private String email;
 
-    @Size(min = 4, max = 50, message = "Username has to be between 4 and 50 characters long")
-    @NotNull(message = "Username cannot be null")
+    @Size(min = 4, max = 50, message = "Login has to be between 4 and 50 characters long")
+    @NotNull(message = "Login cannot be null")
     private String username;
 
     @Password(message = "Password must contain at least one number and one capital letter")
@@ -55,28 +51,19 @@ public class AppUser {
     protected AppUser() {
     }
 
-    public AppUser(String name, String surname, String email, String username, String password) {
-        this.name = name;
-        this.surname = surname;
+    public AppUser(String companyName, String email, String username, String password) {
+        this.companyName = companyName;
         this.email = email;
         this.username = username;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
+    public String getCompanyName() {
+        return companyName;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public String getPassword() {
@@ -96,8 +83,7 @@ public class AppUser {
     }
 
     public void update(AppUser user) {
-        name = user.name;
-        surname = user.surname;
+        companyName = user.companyName;
         email = user.email;
         username = user.username;
         password = user.password;

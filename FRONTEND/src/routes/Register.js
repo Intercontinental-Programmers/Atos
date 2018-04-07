@@ -19,7 +19,7 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         flexGrow: 1,
-        paddingTop: '7%',
+        paddingTop: '10%',
     },
     margin: {
         margin: theme.spacing.unit,
@@ -56,12 +56,29 @@ const theme = createMuiTheme({
 
 class Register extends React.Component {
     state = {
-        amount: '',
+        login: '',
         password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
+        email: '',
+        company: '',
     };
+
+    register = () => {
+        var data = {
+            username: this.state.login,
+            password: this.state.password,
+            email: this.state.email,
+            companyName: this.state.company
+        }
+    
+        console.log(data)
+    
+        var request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:5000/api/auth/register', true);
+        request.setRequestHeader('Content-Type', 'text/plain');
+        request.send(JSON.stringify(data));
+    
+        console.log(request)
+    }
 
 
     handleChange = prop => event => {
@@ -81,68 +98,70 @@ class Register extends React.Component {
 
         return (
             <div className={classes.root}>
-            <Grid container spacing={0}>
-                <Grid item xs />
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
-                <Typography variant="display1" gutterBottom>
-                    Please enter data:
+                <Grid container spacing={0}>
+                    <Grid item xs />
+                    <Grid item xs={6}>
+                        <Paper className={classes.paper}>
+                            <Typography variant="display1" gutterBottom>
+                                Please enter data:
                 </Typography>
-
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Login</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.state.amount}
-                        onChange={this.handleChange('amount')}
-                    />
-                </FormControl>
-                <FormControl fullWidth className={classNames(classes.margin)}>
-                    <InputLabel htmlFor="adornment-password">Password</InputLabel>
-                    <Input
-                        id="adornment-password"
-                        type={this.state.showPassword ? 'text' : 'password'}
-                        value={this.state.password}
-                        onChange={this.handleChange('password')}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="Toggle password visibility"
-                                    onClick={this.handleClickShowPassword}
-                                    onMouseDown={this.handleMouseDownPassword}
-                                >
-                                    {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-                </FormControl>
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Email</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.state.amount}
-                        onChange={this.handleChange('amount')}
-                    />
-                </FormControl>
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Company name</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.state.amount}
-                        onChange={this.handleChange('amount')}
-                    />
-                </FormControl>
-                <MuiThemeProvider theme={theme}>
-                    <Button className={classes.button} variant="raised" color="primary">
-                        Send&#160;&#160;
+                            <FormControl fullWidth className={classes.margin}>
+                                <InputLabel htmlFor="login">Login</InputLabel>
+                                <Input
+                                    id="login"
+                                    value={this.state.login}
+                                    onChange={this.handleChange('login')}
+                                />
+                            </FormControl>
+                            <FormControl fullWidth className={classNames(classes.margin)}>
+                                <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                                <Input
+                                    id="adornment-password"
+                                    type={this.state.showPassword ? 'text' : 'password'}
+                                    value={this.state.password}
+                                    onChange={this.handleChange('password')}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                id="password"
+                                                value={this.state.password}
+                                                onChange={this.handleChange('password')}
+                                                aria-label="Toggle password visibility"
+                                                onClick={this.handleClickShowPassword}
+                                                onMouseDown={this.handleMouseDownPassword}
+                                            >
+                                                {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                />
+                            </FormControl>
+                            <FormControl fullWidth className={classes.margin}>
+                                <InputLabel htmlFor="email">Email</InputLabel>
+                                <Input
+                                    id="email"
+                                    value={this.state.email}
+                                    onChange={this.handleChange('email')}
+                                />
+                            </FormControl>
+                            <FormControl fullWidth className={classes.margin}>
+                                <InputLabel htmlFor="company">Company Name</InputLabel>
+                                <Input
+                                    id="company"
+                                    value={this.state.company}
+                                    onChange={this.handleChange('company')}
+                                />
+                            </FormControl>
+                            <MuiThemeProvider theme={theme}>
+                                <Button className={classes.button} onClick={this.register} variant="raised" color="primary">
+                                    Send&#160;&#160;
                 <Icon className={classes.rightIcon}>send</Icon>
-                    </Button>
-                </MuiThemeProvider>
-                </Paper>
+                                </Button>
+                            </MuiThemeProvider>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs />
                 </Grid>
-                <Grid item xs />
-            </Grid>
             </div>
         );
     }

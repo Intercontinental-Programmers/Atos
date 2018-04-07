@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
   root: {
@@ -13,6 +14,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+
 });
 
 function Home(props) {
@@ -29,6 +31,9 @@ function Home(props) {
           <Typography variant="display2" gutterBottom>
             we create words.
           </Typography>
+          <Button variant="raised" size="large" href="/criteria" color="primary" className={classes.button}>
+          Let's start
+        </Button>
         </Grid>
         <Grid item xs />
       </Grid>
