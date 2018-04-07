@@ -31,7 +31,16 @@ const styles = theme => ({
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
   },
+  button: {
+    marginTop: '2em',
+    marginLeft: '10em',
+    marginBottom:'3em',
+},
+    
 });
+const divStyle = {
+  marginLeft: '2em',
+};
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -179,6 +188,7 @@ class Criteria extends React.Component {
                 <FormControlLabel
                   control={
                     <Checkbox
+                    style={divStyle}
                       color="primary"
                       checked={this.state.student}
                       onChange={this.handleChange}

@@ -64,21 +64,4 @@ public class DeveloperController {
         }
 
     }
-
-    @GetMapping
-    public ResponseEntity get() {
-
-        List<Developer> result = new ArrayList<>();
-        List<String> languages = new ArrayList<>();
-        languages.add("Python");
-        languages.add("Java");
-        result.add(new Developer("Adrian", "Maślak", "email@o2.pl",
-                "Junior Frontend developer", "www.mojastrona.pl", languages, "Wrocław", true));
-        result.add(new Developer("Marian", "Cieślak", "emaaail@o2.pl",
-                "Senior Javascript developer", "www.mojaaaastrona.pl", languages, "Poznań", false));
-        result.add(new Developer("Dorian", "Maślak", "mójemail@o2.pl",
-                "Java developer", "www.mojastronazdanymi.pl", languages, "Warszawa", false));
-
-        return ResponseBuilder.status(200).body(result);
-    }
 }
