@@ -13,7 +13,6 @@ import Typography from 'material-ui/Typography';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-//import axios from 'axios';
 
 
 const styles = theme => ({
@@ -57,38 +56,6 @@ const theme = createMuiTheme({
     },
 });
 
-// const config = {
-//     headers: {
-//         'Content-Type': 'text/plain',
-//     }
-//   };
-
-// function login() {
-//     var data = {
-//         username: this.login.value,
-//         password: this.password.value,
-//     }
-
-//     console.log(data)
-
-//     var request = new XMLHttpRequest();
-//     request.open('POST', 'http://localhost:5000/api/auth/login', true);
-//     request.setRequestHeader('Content-Type', 'text/plain');
-//     request.send(JSON.stringify(data));
-
-//     console.log(request)
-
-    // axios.post('http://localhost:5000/api/auth/login', querystring.stringify(data), config)
-
-    // $.ajax({
-    //     type: 'POST', url: 'http://localhost:5000/api/auth/login', data: {
-    //       email: "test@email.com"
-    //     },
-    //   }).done(function(res) {
-    //     console.log(res);
-    //   })
-// }
-
 class LoginComponent extends React.Component {
     state = {
         login: '',
@@ -101,15 +68,16 @@ class LoginComponent extends React.Component {
             username: this.state.login,
             password: this.state.password,
         }
-    
+
         console.log(data)
-    
+
         var request = new XMLHttpRequest();
         request.open('POST', 'http://localhost:5000/api/auth/login', true);
         request.setRequestHeader('Content-Type', 'text/plain');
         request.send(JSON.stringify(data));
-    
+
         console.log(request)
+        console.log(request.responseText.token)
     }
 
     handleChange = prop => event => {
