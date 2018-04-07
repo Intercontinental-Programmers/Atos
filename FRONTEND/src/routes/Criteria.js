@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import DataList from "../components/DataList";
 import Criteria from "../components/Criteria";
+import Student from "../components/Student";
+import Listcity from "../components/Listcity";
 import axios from "axios";
+import Paper from 'material-ui/Paper';
+import Grid from 'material-ui/Grid';
+
+
+const styles = theme => ({
+
+});
 
 class Home extends Component {
+
 
   state = {
     data: []
@@ -42,8 +52,16 @@ class Home extends Component {
   render() {
     return (
       <div>
+                            <Grid container spacing={0}>
+                        <Grid item xs />
+                        <Grid item xs={6}>
+                            <Paper >
         <Criteria/>
-        <DataList data={this.state.data} />
+        <Student/>
+        </Paper>
+                        </Grid>
+                        <Grid item xs />
+                    </Grid>
 
       </div>
     );

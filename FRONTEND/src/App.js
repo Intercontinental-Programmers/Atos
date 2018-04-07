@@ -9,6 +9,7 @@ import About from './routes/About';
 import Login from './routes/Login';
 import './style.css';
 import Register from './routes/Register';
+import Criteria from './routes/Criteria';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/criteria" component={Criteria} />
           </div>
         </Router>
         <Footer />
