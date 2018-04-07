@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
 const styles = theme => ({
   root: {
@@ -17,26 +18,41 @@ const styles = theme => ({
 
 });
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#222',
+    },
+    secondary: {
+      light: '#0066ff',
+      main: '#0044ff',
+      contrastText: '#ffcc00',
+    },
+  },
+});
+
 function Home(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={0}>
-        <Grid item xs />
-        <Grid item xs={6}>
-          <Typography variant="display4" gutterBottom>
-            React App
+      <MuiThemeProvider theme={theme}>
+        <Grid container spacing={0}>
+          <Grid item xs />
+          <Grid item xs={6}>
+            <Typography variant="display4" gutterBottom>
+              React App
           </Typography>
-          <Typography variant="display2" gutterBottom>
-            we create words.
-          </Typography>
-          <Button variant="raised" size="large" href="/criteria" color="primary" className={classes.button}>
-          Let's start
+            <Typography variant="display2" gutterBottom>
+              we create words.
+          </Typography><br/><br/>
+            <Button variant="raised" size="large" href="/login" color="primary" className={classes.button}>
+              Let's start
         </Button>
+          </Grid>
+          <Grid item xs />
         </Grid>
-        <Grid item xs />
-      </Grid>
+      </MuiThemeProvider>
     </div>
   );
 }
