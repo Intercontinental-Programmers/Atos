@@ -44,10 +44,10 @@ function Home(props) {
           <Grid item xs />
           <Grid item xs={6}>
             <Typography variant="display4" gutterBottom>
-              React App
+              Emploizer
           </Typography>
             <Typography variant="display2" gutterBottom>
-              we create words.
+              lets automate the jobs.
           </Typography><br/><br/>
             <Button variant="raised" size="large" href="/login" color="primary" className={classes.button}>
               Let's start

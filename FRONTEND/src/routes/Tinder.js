@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DataList from "../components/DataList";
 import axios from "axios";
-
+import cookie from 'react-cookies'
 
 
 class Tinder extends Component {
@@ -11,8 +11,11 @@ class Tinder extends Component {
   };
 
   componentDidMount() {
+    let token = cookie.load('token')
     axios
-      .get("http://156.17.72.33:5000/api/developers")
+      .get("http://localhost:5000/api/developers/test", 
+      { headers: { 'Authorization': 'Bearer ' + token } }
+    )
       .then(response => {
 
         // create an array of contacts only with relevant data

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Data from "../components/Data";
+import cookie from 'react-cookies'
   const divStyle = {
     width:'1200px',
     };
@@ -12,8 +13,14 @@ class Choose extends Component {
 
 
   componentDidMount() {
+    let token = cookie.load('token')
+
     axios
-      .get("http://156.17.72.33:5000/api/developers/test")
+      .get("http://localhost:5000/api/developers/test", {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
       .then(response => {
 
         const newData = response.data.map(c => {

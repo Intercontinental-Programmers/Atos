@@ -89,7 +89,7 @@ class LoginComponent extends React.Component {
         request.send(JSON.stringify(data));
         console.log(request)
         console.log(typeof(token))
-        if (token != undefined) {
+        if (token !== undefined) {
             if (window) window.location.href = "/criteria"
             return true;
         }

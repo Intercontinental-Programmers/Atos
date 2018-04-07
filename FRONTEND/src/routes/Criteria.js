@@ -34,9 +34,9 @@ const styles = theme => ({
   button: {
     marginTop: '2em',
     marginLeft: '10em',
-    marginBottom:'3em',
-},
-    
+    marginBottom: '3em',
+  },
+
 });
 const divStyle = {
   marginLeft: '2em',
@@ -82,6 +82,7 @@ const theme = createMuiTheme({
     },
   },
 });
+var newData = []
 
 class Criteria extends React.Component {
   state = {
@@ -95,7 +96,7 @@ class Criteria extends React.Component {
     var data = {
       levels: this.state.levels,
       languages: this.state.languages,
-      cities: [this.state.cities],
+      cities: this.state.cities,
       student: this.state.student,
     }
 
@@ -105,12 +106,38 @@ class Criteria extends React.Component {
     console.log(token)
 
     var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+      if (request.readyState === 4) {
+        console.log(JSON.parse(request.response))
+        newData = JSON.parse(request.response);
+        // token = JSON.parse(request.response).token
+        // cookie.save('token', (JSON.parse(request.response).token), { path: '/' })
+      }
+    }
+
     request.open('POST', 'http://localhost:5000/api/developers', true);
     request.setRequestHeader('Content-Type', 'text/plain');
     request.setRequestHeader('Authorization', 'Bearer ' + token);
     console.log('Bearer ' + token)
     request.send(JSON.stringify(data));
     console.log(request)
+
+
+    console.log(newData)
+    var req = new XMLHttpRequest();
+    req.open('POST', 'http://localhost:5000/api/developers/test', true);
+    req.setRequestHeader('Content-Type', 'text/plain');
+    req.setRequestHeader('Authorization', 'Bearer ' + token);
+    req.send(JSON.stringify(newData));
+    console.log(req)
+    setTimeout(this.event, 2000)
+    setTimeout(this.post, 1000)
+  }
+
+  event = () => {
+    if (window) window.location.href = "/tinder"
+    return true;
   }
 
   handleChange = event => {
@@ -192,7 +219,7 @@ class Criteria extends React.Component {
                 <FormControlLabel
                   control={
                     <Checkbox
-                    style={divStyle}
+                      style={divStyle}
                       color="primary"
                       checked={this.state.student}
                       onChange={this.handleChange}
