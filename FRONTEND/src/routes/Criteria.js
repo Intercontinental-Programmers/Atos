@@ -47,19 +47,24 @@ const MenuProps = {
 const lang = [
   'Python',
   'Javascript',
-  'C++'
+  'Cpp',
+  'Csharp',
+  'Ruby',
+  'Typescript',
+  'C',
+  'Java'
 ];
 
 const lvl = [
   'Junior',
-  'Middle',
+  'Regular',
   'Senior'
 ];
 
 const town = [
   'Warszawa',
   'Lublin',
-  'Wroclaw'
+  'Wrocław'
 ];
 
 const theme = createMuiTheme({
@@ -83,6 +88,23 @@ class Criteria extends React.Component {
     student: true,
   };
 
+  post = () => {
+    var data = {
+      levels: this.state.levels,
+      languages: this.state.languages,
+      cities: [this.state.cities],
+      student: this.state.student,
+    }
+
+    console.log(data)
+
+    var request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:5000/api/developers', true);
+    request.setRequestHeader('Content-Type', 'text/plain');
+    request.send(JSON.stringify(data));
+    console.log(request)
+    console.log(request.text)
+  }
 
   handleChange = event => {
     this.setState({ student: event.target.checked });
@@ -99,6 +121,7 @@ class Criteria extends React.Component {
   handleCityChange = event => {
     this.setState({ cities: event.target.value });
   };
+
 
   render() {
     const { classes } = this.props;
@@ -150,23 +173,13 @@ class Criteria extends React.Component {
                   </Select>
                 </FormControl>
 
-                <FormControl fullWidth className={classes.formControl}>
-                  <InputLabel htmlFor="select-multiple-checkbox">City</InputLabel>
-                  <Select
-                    multiple
+                <FormControl fullWidth className={classes.margin}>
+                  <InputLabel htmlFor="cities">City</InputLabel>
+                  <Input
+                    id="cities"
                     value={this.state.cities}
                     onChange={this.handleCityChange}
-                    input={<Input id="select-multiple-checkbox" />}
-                    renderValue={selected => selected.join(', ')}
-                    MenuProps={MenuProps}
-                  >
-                    {town.map(cities => (
-                      <MenuItem key={cities} value={cities}>
-                        <Checkbox checked={this.state.languages.indexOf(cities) > -1} />
-                        <ListItemText primary={cities} />
-                      </MenuItem>
-                    ))}
-                  </Select>
+                  />
                 </FormControl>
 
                 <FormControlLabel
@@ -178,7 +191,7 @@ class Criteria extends React.Component {
                       value="student"
                     />} label="Student" />
 
-                <Button className={classes.button} 
+                <Button className={classes.button} onClick={this.post}
                   variant="raised" color="primary">
                   Send&#160;&#160;
                         <Icon className={classes.rightIcon}>send</Icon>

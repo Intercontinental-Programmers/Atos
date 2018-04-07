@@ -33,7 +33,7 @@ function Footer(props) {
             <MuiThemeProvider theme={theme}>
                 <AppBar position="static" color="primary">
                         <Typography align="center" color="inherit" className={classes.flex}>
-                            <br/>React Simple App<br/><br/>
+                            <br/>Copyright: Intercontinental Programmers<br/><br/>
                         </Typography>
                 </AppBar>
             </MuiThemeProvider>

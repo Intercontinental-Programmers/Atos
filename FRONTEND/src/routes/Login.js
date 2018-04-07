@@ -75,9 +75,8 @@ class LoginComponent extends React.Component {
         request.open('POST', 'http://localhost:5000/api/auth/login', true);
         request.setRequestHeader('Content-Type', 'text/plain');
         request.send(JSON.stringify(data));
-
         console.log(request)
-        console.log(request.responseText.token)
+        console.log(request.text)
     }
 
     handleChange = prop => event => {

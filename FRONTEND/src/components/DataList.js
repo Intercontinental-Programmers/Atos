@@ -18,8 +18,20 @@ function DataList(props) {
 
   return (
 
-    <Cards onEnd={() => { if (window) window.location.href = "/choose" 
-      return true; }} 
+    <Cards onEnd={() => {
+      var data = {
+          data: this.data,
+      }
+  
+      console.log(data)
+  
+      var request = new XMLHttpRequest();
+      request.open('POST', 'http://localhost:5000/api/developers/test', true);
+      request.setRequestHeader('Content-Type', 'text/plain');
+      request.send(JSON.stringify(data));
+      console.log(request)
+      console.log(request.text)
+  }} 
       className='master-root'>
       {props.data.map(c =>
         <Card
