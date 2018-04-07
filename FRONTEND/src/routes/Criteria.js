@@ -9,7 +9,6 @@ import Grid from 'material-ui/Grid';
 
 
 const styles = theme => ({
-
 });
 
 class Home extends Component {
@@ -56,8 +55,8 @@ class Home extends Component {
                         <Grid item xs />
                         <Grid item xs={6}>
                             <Paper >
+        <Student/>                     
         <Criteria/>
-        <Student/>
         </Paper>
                         </Grid>
                         <Grid item xs />
