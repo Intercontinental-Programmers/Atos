@@ -7,25 +7,32 @@ public class Developer {
     private String name;
     private String surname;
     private String email;
-    private String position;
+    private String level;
     private String website;
-    private List<String> languages;
+    private String mainLanguage;
     private String city;
     private boolean student;
+    private String bio;
+    private List<String> sideTechnologies;
 
-    public Developer(String name, String surname, String email, String position,
-                     String website, List<String> languages, String city, boolean student) {
+    public Developer(String name, String surname, String email, String level,
+                     String website, String mainLanguage, String city, String bio,
+                     boolean student, List<String> sideTechnologies) {
+
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.position = position;
+        this.level = level;
         this.website = website;
-        this.languages = languages;
+        this.mainLanguage = mainLanguage;
         this.city = city;
         this.student = student;
+        this.bio = bio;
+        this.sideTechnologies = sideTechnologies;
     }
 
-    public Developer(){}
+    public Developer() {
+    }
 
     public String getName() {
         return name;
@@ -39,17 +46,14 @@ public class Developer {
         return email;
     }
 
-    public String getPosition() {
-        return position;
+    public String getLevel() {
+        return level;
     }
 
     public String getWebsite() {
         return website;
     }
 
-    public List<String> getLanguages() {
-        return languages;
-    }
 
     public String getCity() {
         return city;
@@ -57,6 +61,18 @@ public class Developer {
 
     public boolean isStudent() {
         return student;
+    }
+
+    public String getMainLanguage() {
+        return mainLanguage;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public List<String> getSideTechnologies() {
+        return sideTechnologies;
     }
 }
 
