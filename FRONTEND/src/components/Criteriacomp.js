@@ -22,7 +22,7 @@ const styles = theme => ({
   }
 });
 
-class Criteria extends React.Component {
+class Criteriacomp extends React.Component {
   state = { open: false };
 
   handleClick = () => {
@@ -88,8 +88,8 @@ class Criteria extends React.Component {
   }
 }
 
-Criteria.propTypes = {
+Criteriacomp.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Criteria);
+export default withStyles(styles)(Criteriacomp);

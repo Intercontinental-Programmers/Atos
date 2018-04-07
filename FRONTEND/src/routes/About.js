@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DataList from "../components/DataList";
-import Criteria from "../components/Criteria";
 import axios from "axios";
 
 class Home extends Component {
@@ -42,7 +41,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Criteria/>
         <DataList data={this.state.data} />
 
       </div>

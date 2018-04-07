@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DataList from "../components/DataList";
-import Criteria from "../components/Criteria";
+import Criteriacomp from "../components/Criteriacomp";
 import Student from "../components/Student";
 import Listcity from "../components/Listcity";
 import axios from "axios";
@@ -56,7 +56,7 @@ class Home extends Component {
                         <Grid item xs={6}>
                             <Paper >
         <Student/>                     
-        <Criteria/>
+        <Criteriacomp/>
         </Paper>
                         </Grid>
                         <Grid item xs />
