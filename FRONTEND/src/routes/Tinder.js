@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DataList from "../components/DataList";
-import Criteria from "../components/Criteria";
 import axios from "axios";
 
 class Tinder extends Component {
@@ -43,7 +42,6 @@ class Tinder extends Component {
     return (
       <div>
         <DataList data={this.state.data} />
-
       </div>
     );
   }

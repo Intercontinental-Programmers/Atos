@@ -18,7 +18,7 @@ function DataList(props) {
 
   return (
 
-    <Cards onEnd={() => { if (window) window.location.href = "/" 
+    <Cards onEnd={() => { if (window) window.location.href = "/choose" 
       return true; }} 
       className='master-root'>
       {props.data.map(c =>
