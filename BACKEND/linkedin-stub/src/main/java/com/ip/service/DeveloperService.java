@@ -24,9 +24,21 @@ public class DeveloperService {
 
         return newArrayList(developerRepository.findAll())
                 .stream()
-                .filter(developer -> cities.contains(developer.getCity()))
-                .filter(developer -> languages.contains(developer.getMainLanguage()))
-                .filter(developer -> levels.contains(developer.getLevel()))
+                .filter(developer -> {
+                    if (cities.isEmpty())
+                        return true;
+                    return cities.contains(developer.getCity());
+                })
+                .filter(developer -> {
+                    if (languages.isEmpty())
+                        return true;
+                    return languages.contains(developer.getMainLanguage());
+                })
+                .filter(developer -> {
+                    if (levels.isEmpty())
+                        return true;
+                    return levels.contains(developer.getLevel());
+                })
                 .filter(developer -> {
 
                     if (student == null)
