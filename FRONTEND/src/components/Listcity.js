@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
-import CommentIcon from 'material-ui-icons/Comment';
 
 const styles = theme => ({
   root: {
@@ -14,7 +13,7 @@ const styles = theme => ({
   },
 });
 
-class Lvllist extends React.Component {
+class Listcity extends React.Component {
   state = {
     checked: [0],
   };
@@ -62,8 +61,8 @@ class Lvllist extends React.Component {
   }
 }
 
-Lvllist.propTypes = {
+Listcity.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Lvllist);
+export default withStyles(styles)(Listcity);
