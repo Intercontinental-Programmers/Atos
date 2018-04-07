@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/developers")
+@CrossOrigin
 public class DeveloperController {
 
     private String dupa;
