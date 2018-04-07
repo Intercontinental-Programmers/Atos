@@ -13,7 +13,7 @@ import Typography from 'material-ui/Typography';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-
+import cookie from 'react-cookies'
 
 const styles = theme => ({
     root: {
@@ -64,6 +64,7 @@ class LoginComponent extends React.Component {
         data: []
     };
 
+
     login = () => {
         var data = {
             username: this.state.login,
@@ -72,13 +73,20 @@ class LoginComponent extends React.Component {
 
         console.log(data)
 
+    
         var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function () {
+            if(request.readyState == 4){
+                console.log(JSON.parse(request.response).token)
+                cookie.save('token', (JSON.parse(request.response).token), { path: '/' })
+            }
+        }
         request.open('POST', 'http://localhost:5000/api/auth/login', true);
         request.setRequestHeader('Content-Type', 'text/plain');
         request.send(JSON.stringify(data));
         console.log(request)
-        console.log(request.responseText)
-
+        console.log(request.responseURL)
     }
 
     handleChange = prop => event => {

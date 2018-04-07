@@ -13,7 +13,7 @@ import { FormControlLabel } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
-
+import cookie from 'react-cookies'
 
 const styles = theme => ({
   root: {
@@ -101,9 +101,13 @@ class Criteria extends React.Component {
 
     console.log(data)
 
+    let token = cookie.load('token')
+    console.log(token)
+
     var request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:5000/api/developers', true);
     request.setRequestHeader('Content-Type', 'text/plain');
+    request.setRequestHeader('Authorization', 'Bearer ' + token);
     request.send(JSON.stringify(data));
     console.log(request)
     console.log(request.text)
