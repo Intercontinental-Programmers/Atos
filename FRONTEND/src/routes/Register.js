@@ -73,7 +73,7 @@ class Register extends React.Component {
         console.log(data)
     
         var request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost/api/auth/register', true);
+        request.open('POST', 'http://localhost:5000/api/auth/register', true);
         request.setRequestHeader('Content-Type', 'text/plain');
         request.send(JSON.stringify(data));
     

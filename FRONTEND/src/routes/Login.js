@@ -81,8 +81,7 @@ class LoginComponent extends React.Component {
             if (request.readyState === 4) {
                 console.log(JSON.parse(request.response).token)
                 // token = JSON.parse(request.response).token
-                cookie.save('token', (JSON.parse(request.response).token), { path: '/' })
-            }
+                cookie.save('token', (JSON.parse(request.response).token), { path: '/' })            }
         }
         request.open('POST', 'http://localhost:5000/api/auth/login', true);
         request.setRequestHeader('Content-Type', 'text/plain');
