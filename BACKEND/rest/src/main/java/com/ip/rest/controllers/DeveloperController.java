@@ -1,14 +1,18 @@
 package com.ip.rest.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ip.domain.AppUser;
 import com.ip.domain.Developer;
 import com.ip.domain.DeveloperRequest;
 import com.ip.rest.util.DateUtil;
 import com.ip.rest.util.ResponseBuilder;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +23,21 @@ import static com.ip.services.ValidationException.errorMapFromBindingResult;
 public class DeveloperController {
 
     @PostMapping()
-    public ResponseEntity post(@RequestBody @Valid DeveloperRequest developerRequest, BindingResult bindingResult) {
+    public ResponseEntity post(@RequestBody String json) {
 
-        if (bindingResult.hasErrors())
+
+        try {
+            Developer result = new ObjectMapper().readValue(json, Developer.class);
+
+        } catch (Exception e) {
             return ResponseBuilder
                     .status(400)
                     .add("timestamp", DateUtil.getTimestamp())
                     .add("status", 400)
                     .add("message", "Model validation failed")
-                    .add("errors", errorMapFromBindingResult(bindingResult))
                     .build();
+        }
+
 
         List<Developer> result = new ArrayList<>();
         List<String> languages = new ArrayList<>();

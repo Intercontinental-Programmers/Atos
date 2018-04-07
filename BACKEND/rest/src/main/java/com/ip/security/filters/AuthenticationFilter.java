@@ -5,6 +5,8 @@ import com.ip.domain.Role;
 import com.ip.rest.util.DateUtil;
 import com.ip.security.util.TokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.util.EncodingUtils;
 import org.json.JSONObject;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +20,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,8 +44,13 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
+
         try {
-            AppUser credentials = new ObjectMapper().readValue(req.getInputStream(), AppUser.class);
+            StringWriter writer = new StringWriter();
+            IOUtils.copy(req.getInputStream(), writer);
+            String theString = writer.toString();
+
+            AppUser credentials = new ObjectMapper().readValue(theString, AppUser.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

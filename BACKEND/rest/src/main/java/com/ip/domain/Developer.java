@@ -25,6 +25,8 @@ public class Developer {
         this.student = student;
     }
 
+    public Developer(){}
+
     public String getName() {
         return name;
     }

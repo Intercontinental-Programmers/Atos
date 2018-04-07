@@ -1,20 +1,20 @@
 package com.ip.rest.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ip.domain.AppUser;
 import com.ip.rest.util.DateUtil;
 import com.ip.rest.util.ResponseBuilder;
 import com.ip.services.AppUserService;
 import com.ip.services.ValidationException;
-import jdk.jfr.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
-import static com.ip.services.ValidationException.errorMapFromBindingResult;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -31,19 +31,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity registerUser(@Valid @RequestBody AppUser user, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors())
-            return ResponseBuilder
-                    .status(400)
-                    .add("timestamp", DateUtil.getTimestamp())
-                    .add("status", 400)
-                    .add("message", "Model validation failed")
-                    .add("errors", errorMapFromBindingResult(bindingResult))
-                    .build();
-
-
+    public ResponseEntity registerUser(@RequestBody String json) {
         try {
+            AppUser user = new ObjectMapper().readValue(json, AppUser.class);
             user.encodePassword(encoder);
             appUserService.addUser(user);
 
@@ -53,7 +43,13 @@ public class AuthController {
                     .add("status", 201)
                     .add("message", "User successfully registered")
                     .build();
-
+        } catch (IOException e) {
+            return ResponseBuilder
+                    .status(400)
+                    .add("timestamp", DateUtil.getTimestamp())
+                    .add("status", 400)
+                    .add("message", "Model validation failed")
+                    .build();
         } catch (ValidationException e) {
             return ResponseBuilder
                     .status(400)
@@ -66,18 +62,10 @@ public class AuthController {
     }
 
     @PostMapping("/admin/register")
-    public ResponseEntity registerAdmin(@Valid @RequestBody AppUser user, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors())
-            return ResponseBuilder
-                    .status(400)
-                    .add("timestamp", DateUtil.getTimestamp())
-                    .add("status", 400)
-                    .add("message", "Model validation failed")
-                    .add("errors", errorMapFromBindingResult(bindingResult))
-                    .build();
+    public ResponseEntity registerAdmin(@RequestBody String json) {
 
         try {
+            AppUser user = new ObjectMapper().readValue(json, AppUser.class);
             user.encodePassword(encoder);
             user.setAdminAccount();
             appUserService.addUser(user);
@@ -89,6 +77,13 @@ public class AuthController {
                     .add("message", "User successfully registered")
                     .build();
 
+        } catch (IOException e) {
+            return ResponseBuilder
+                    .status(400)
+                    .add("timestamp", DateUtil.getTimestamp())
+                    .add("status", 400)
+                    .add("message", "Model validation failed")
+                    .build();
         } catch (ValidationException e) {
             return ResponseBuilder
                     .status(400)
