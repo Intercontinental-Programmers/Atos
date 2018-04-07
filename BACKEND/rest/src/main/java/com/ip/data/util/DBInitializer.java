@@ -42,12 +42,12 @@ public class DBInitializer implements ApplicationListener<ContextRefreshedEvent>
         roleRepository.save(new Role("ROLE_ADMIN"));
         roleRepository.save(new Role("ROLE_USER"));
 
-        AppUser admin = new AppUser("admin", "admin", "admin@admin.com", "root", "Root123");
+        AppUser admin = new AppUser("admin", "admin@admin.com", "root", "Root123");
         admin.addRole(roleRepository.getByName(ADMIN));
         admin.encodePassword(encoder);
         appUserRepository.save(admin);
 
-        AppUser user = new AppUser("user", "user", "user@user.com", "user", "User123");
+        AppUser user = new AppUser("Test company", "user@user.com", "user", "User123");
         user.addRole(roleRepository.getByName(USER));
         user.encodePassword(encoder);
         appUserRepository.save(user);
