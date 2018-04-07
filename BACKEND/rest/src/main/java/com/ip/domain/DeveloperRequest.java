@@ -4,31 +4,31 @@ import java.util.List;
 
 public class DeveloperRequest {
 
-    private String position;
+    private List<String> levels;
     private List<String> languages;
-    private boolean student;
-    private String city;
+    private Boolean student;
+    private List<String> cities;
 
-    public DeveloperRequest(String position, List<String> languages, String city, boolean student) {
-        this.position = position;
+    public DeveloperRequest(List<String> levels, List<String> languages, List<String> city, Boolean student) {
+        this.levels = levels;
         this.languages = languages;
         this.student = student;
-        this.city = city;
+        this.cities = city;
     }
 
-    public String getPosition() {
-        return position;
+    public List<String> getLevels() {
+        return levels;
     }
 
     public List<String> getLanguages() {
         return languages;
     }
 
-    public boolean isStudent() {
+    public Boolean isStudent() {
         return student;
     }
 
-    public String getCity() {
-        return city;
+    public List<String> getCities() {
+        return cities;
     }
 }

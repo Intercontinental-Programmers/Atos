@@ -1,12 +1,15 @@
 package com.ip.rest.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ip.data.client.HttpClientManager;
+import com.ip.data.client.QueryStringSerializer;
 import com.ip.domain.AppUser;
 import com.ip.domain.Developer;
 import com.ip.domain.DeveloperRequest;
 import com.ip.rest.util.DateUtil;
 import com.ip.rest.util.ResponseBuilder;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +30,9 @@ public class DeveloperController {
 
 
         try {
-            Developer result = new ObjectMapper().readValue(json, Developer.class);
+            DeveloperRequest request = new ObjectMapper().readValue(json, DeveloperRequest.class);
+            HttpClientManager manager = new HttpClientManager();
+            manager.get("http://localhost:8090/linkedin/api/developers" + QueryStringSerializer.serialize(request));
 
         } catch (Exception e) {
             return ResponseBuilder
@@ -37,7 +42,6 @@ public class DeveloperController {
                     .add("message", "Model validation failed")
                     .build();
         }
-
 
         List<Developer> result = new ArrayList<>();
         List<String> languages = new ArrayList<>();
